@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyWebsite</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyWebsite.styles.css" asp-append-version="true" />
+    @if (ViewData["PageCSS"] != null)
+    {
+        <link rel="stylesheet" href="css/@ViewData["PageCSS"]" />
+    }
+</head>
+<body>
+    <header>
+        <button id="open-sidebar-button" onclick="openSidebar()">
+            <img height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9" src="~/images/menu_40dp_C9C9C9_FILL0_wght300_GRAD0_opsz40.svg">
+        </button>
+
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <button id="close-sidebar-button" onclick="closeSidebar()">
+                        <img height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9" src="~/images/close_40dp_C9C9C9_FILL0_wght300_GRAD0_opsz40.svg">
+                    </button>
+                </li>
+                <li class="home-li"><a asp-area="" asp-page="/Index">Home</a></li>
+                <li>                <a asp-area="" asp-page="/About">About Me</a></li>
+                <li>                <a asp-area="" asp-page="/Projects">Projects</a></li>
+                <li>                <a asp-area="" asp-page="/Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div>
+            &copy; 2024 - MyWebsite - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

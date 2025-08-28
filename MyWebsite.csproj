@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ExcludeFoldersFromDeployment>publish</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <Content Remove="publish\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <None Remove="publish\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="WebSocketSharp-netstandard" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+</Project>

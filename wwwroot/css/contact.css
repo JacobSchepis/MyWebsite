@@ -1,0 +1,35 @@
+﻿.contact {
+    padding: 2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 0.5em 1em;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

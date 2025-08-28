@@ -1,0 +1,251 @@
+/* styles.css */
+:root{
+    --primary-color: #11121a;
+    --hover-color: #272832;
+    --accent-color: #0071FF;
+    --text-color: #c9c9c9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('/images/background.jpg') center center repeat;
+    background-size: auto;
+    background-size:auto;
+    min-height: 100dvh;
+
+    border: dashed red;
+}
+
+h1{
+    margin: 2dvh;
+    text-align: center;
+}
+
+h2{
+    margin: 2dvh;
+}
+
+nav{
+    background-color: var(--primary-color);
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav .home-li{
+    margin-right: auto;
+}
+
+nav a{
+    display: flex;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 1em 2em;
+    transition: background-color 150ms ease;
+}
+
+nav a:hover{
+    background-color: var(--hover-color);
+}
+
+#open-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    margin-left: auto;
+    cursor: pointer;
+}
+#close-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px){
+    #open-sidebar-button, #close-sidebar-button{
+        display: block;
+    }
+
+    nav{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100dvh;
+        width: min(15em, 100%);
+        z-index: 10;
+        transition: right 300ms ease-out;
+    }
+
+    nav.show{
+        right: 0;
+    }
+
+    nav ul{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    nav a{
+        width: 100%;
+        padding-left: 2.5em;
+    }
+}
+
+.columns{
+    max-width: 100%;
+    min-width: 100%;
+
+    border: dashed
+}
+
+.main-element{
+    columns: 3;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    width: 100%;
+
+    border: dashed blue;
+}
+
+.main-page-element {
+    width: 90%;
+    display:block;
+    justify-content: center;
+    margin: 2dvh;
+
+    background-color: ghostwhite;
+    border-radius: 10px;
+
+    break-inside: avoid;
+
+    padding: 18px;
+}
+
+.profile-image{
+    width:100%;
+}
+
+
+.element-image{
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+.project{
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    background-color: darkgray;
+    border-radius: 10px;
+    break-inside: avoid;
+}
+
+    .project p, h3 {
+        padding: 0px 10% 10px 10%;
+        color: var(--text-color);
+    }
+
+.project img{
+    padding-top: 2dvh;
+}
+
+.techicons{
+    margin: 1dvh;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.techicons img{
+    margin: 2px;
+    width: 5%;
+}
+
+.socials{
+    display: flex;
+    justify-content: center;
+}
+
+.socials img{
+    width: 7%;
+    margin: 0dvh 2dvh;
+}
+
+.projects-grid {
+    width: min(1000px, 100%);
+    margin: 0 auto;
+    columns: 3 300px;
+    column-gap: 1em;
+}
+
+.about-techicons{
+    columns: 5;
+    background-color: grey;
+    border-radius: 20px;
+    width: 40%;
+    align-content:center;   
+}
+
+.about-techicons img{
+    width: 50px;
+}
+
+.certification-list{
+    border:dashed red;
+    width: 20%;
+}
+
+.cert-object{
+    background-color: grey;
+    border-radius:5px;
+    margin: 5px;
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.cert-title{
+    float: left;
+}
+
+.cert-object span{
+    font-size: 3dvh;
+    display: inline-block
+}
+
+.cert-link{
+    padding-left: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 2dvh;
+}
+
+
+
+@media screen and (max-width: 700px){
+    .columns{
+        max-width: 100%;
+    }
+}
+
+.container{
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 1em;
+}
