@@ -4,6 +4,8 @@
     margin: 0 auto;
 }
 
+
+
 form {
     display: flex;
     flex-direction: column;
@@ -12,6 +14,10 @@ form {
 .form-group {
     margin-bottom: 1em;
 }
+
+    .form-group label {
+        color: #EFEEE9;
+    }
 
 label {
     margin-bottom: 0.5em;

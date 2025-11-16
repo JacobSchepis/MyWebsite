@@ -2,60 +2,48 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    ViewData["PageCSS"] = "index.css";
 }
 
 <section>
     <div class="main-element">
-        <div class="columns">
-            <div class="main-page-element">
+
+        <div class="main-page-element element1">
+            <div class="profile-pic test">
                 <img src="~/images/placeholder.jpeg" class="profile-image" />
             </div>
-            <div class="main-page-element">
-                <div class="socials">
-                    <img src="/images/socials/linkedin.png" />
-                    <img src="/images/socials/github.png" />
-                </div>
-            </div>
-            <div class="main-page-element">
-                <p class="blurb">
-                    <h1>Hi, I'm Jacob</h1>
-                    I'm a software developer with a passion for building practical tools, intelligent systems, and immersive digital experiences. Whether it's designing clean architectures, integrating AI-driven features, or creating real-time multiplayer systems, I enjoy solving complex problems with simple, scalable solutions.
-                </p>
-            </div>
-
-            <div class="main-page-element">
-                <div class="techicons">
-                    <img src="~/images/technologies/c-.png" class="element-image" />
-                </div>
-            </div>
+            <div class="header test"></div>
+            <div class="techicons test"></div>
+            <div class="blurb test"></div>
         </div>
 
-        <div class="columns">
-            <div class="main-page-element">
-                <a class="project" asp-page=/Projects>
-                    <img src="~/images/placeholder.jpeg" class="element-image" />
-                    <div class="techicons">
-                            <img src="~/images/technologies/c-.png" class="element-image" />
-                            <img src="~/images/technologies/c-.png" class="element-image" />
-                            <img src="~/images/technologies/c-.png" class="element-image" />
-                    </div>
-                    <h3>Trivia Showdown</h3>
-                    <p>A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete by answering timed questions, all synced via WebSockets.</p>
-                </a>
+        <div class="main-page-element element2">
 
-                <a class="project" asp-page=/Projects>
-                     <img src="~/images/placeholder.jpeg" class="element-image" />
-                     <div class="techicons">
-                         <img src="~/images/technologies/c-.png" class="element-image" />
-                         <img src="~/images/technologies/c-.png" class="element-image" />
-                         <img src="~/images/technologies/c-.png" class="element-image" />
-                     </div>
-                     <h3>ProxyForge – MTG Card Manager</h3>
-                     <p>A desktop app for searching, organizing, and printing Magic: The Gathering proxy cards with custom layouts and deck builder support.</p>
-                </a>
-                
-            </div>
-            
         </div>
+
+        <div class="main-page-element element3">
+
+        </div>
+
+        <div class="main-page-element element4">
+
+        </div>
+
+        <div class="main-page-element element5">
+
+        </div>
+
+        <div class="main-page-element element6">
+
+        </div>
+
+        <div class="main-page-element element7">
+
+        </div>
+
+        <div class="main-page-element element8">
+
+        </div>
+
     </div>
 </section>

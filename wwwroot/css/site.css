@@ -1,9 +1,17 @@
 /* styles.css */
-:root{
-    --primary-color: #11121a;
+:root {
+    --primary-color: #8db0a3;
     --hover-color: #272832;
     --accent-color: #0071FF;
     --text-color: #c9c9c9;
+    --container-color: #7fa1ba;
+    --primary-container-color: #3e4157;
+    --light-shades: #EFEEE9;
+    --light-accent: #B97274;
+    --main-brand-color: #8CA3A9;
+    --main-brand-dark-accent: #5b7075;
+    --dark-accent: #A8574F;
+    --dark-shades: #404F4E;
 }
 
 * {
@@ -16,23 +24,23 @@ body {
     font-family: Arial, sans-serif;
     background: url('/images/background.jpg') center center repeat;
     background-size: auto;
-    background-size:auto;
-    min-height: 100dvh;
-
-    border: dashed red;
+    background-size: auto;
+    min-height: 10dvh;
+    max-height: 30dvh;
 }
 
 h1{
     margin: 2dvh;
     text-align: center;
+    color: var(--light-shades);
 }
 
 h2{
     margin: 2dvh;
 }
 
-nav{
-    background-color: var(--primary-color);
+nav {
+    background-color: var(--light-accent);
 }
 
 nav ul{
@@ -47,13 +55,13 @@ nav .home-li{
 nav a{
     display: flex;
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--dark-shades);
     padding: 1em 2em;
     transition: background-color 150ms ease;
 }
 
 nav a:hover{
-    background-color: var(--hover-color);
+    background-color: var(--dark-accent);
 }
 
 #open-sidebar-button{
@@ -102,147 +110,8 @@ nav a:hover{
     }
 }
 
-.columns{
-    max-width: 100%;
-    min-width: 100%;
-
-    border: dashed
-}
-
-.main-element{
-    columns: 3;
-    flex-wrap: wrap;
-    gap: 20px;
-
-    width: 100%;
-
-    border: dashed blue;
-}
-
-.main-page-element {
-    width: 90%;
-    display:block;
-    justify-content: center;
-    margin: 2dvh;
-
-    background-color: ghostwhite;
-    border-radius: 10px;
-
-    break-inside: avoid;
-
-    padding: 18px;
-}
-
-.profile-image{
-    width:100%;
-}
 
 
-.element-image{
-    width: 50%;
-    margin: auto;
-    display: block;
-}
-
-.project{
-    display: block;
-    margin: auto;
-    text-decoration: none;
-    background-color: darkgray;
-    border-radius: 10px;
-    break-inside: avoid;
-}
-
-    .project p, h3 {
-        padding: 0px 10% 10px 10%;
-        color: var(--text-color);
-    }
-
-.project img{
-    padding-top: 2dvh;
-}
-
-.techicons{
-    margin: 1dvh;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.techicons img{
-    margin: 2px;
-    width: 5%;
-}
-
-.socials{
-    display: flex;
-    justify-content: center;
-}
-
-.socials img{
-    width: 7%;
-    margin: 0dvh 2dvh;
-}
-
-.projects-grid {
-    width: min(1000px, 100%);
-    margin: 0 auto;
-    columns: 3 300px;
-    column-gap: 1em;
-}
-
-.about-techicons{
-    columns: 5;
-    background-color: grey;
-    border-radius: 20px;
-    width: 40%;
-    align-content:center;   
-}
-
-.about-techicons img{
-    width: 50px;
-}
-
-.certification-list{
-    border:dashed red;
-    width: 20%;
-}
-
-.cert-object{
-    background-color: grey;
-    border-radius:5px;
-    margin: 5px;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 20px;
-}
-
-.cert-title{
-    float: left;
-}
-
-.cert-object span{
-    font-size: 3dvh;
-    display: inline-block
-}
-
-.cert-link{
-    padding-left: 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 2dvh;
-}
-
-
-
-@media screen and (max-width: 700px){
-    .columns{
-        max-width: 100%;
-    }
-}
-
-.container{
-    width: 100%;
-}
 
 footer {
     text-align: center;

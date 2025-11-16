@@ -1,0 +1,42 @@
+﻿.project {
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    background-color: var(--main-brand-dark-accent);
+    border-radius: 10px;
+    break-inside: avoid;
+    height: 100%;
+}
+
+    .project p, h3 {
+        padding: 0px 10% 10px 10%;
+        color: var(--light-shades);
+    }
+
+    .project img {
+        padding-top: 2dvh;
+    }
+
+.projects-grid {
+    width: min(1000px, 100%);
+    margin: 0 auto;
+    columns: 3 300px;
+    column-gap: 1em;
+}
+
+.element-image {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+.techicons {
+    margin: 1dvh;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+    .techicons img {
+        margin: 2px;
+        width: 5%;
+    }
