@@ -10,7 +10,8 @@ from my GitHub profile and resume.
 ## Where it's up to (as of 15 Oct 2026)
 
 All four pages have real content and pass WCAG AA contrast; the layout works down to phone width.
-What's left: screenshots for three projects, an optional `mailto:` on Contact, and deploying.
+What's left: screenshots for three projects, an optional `mailto:` on Contact, and finishing the
+bare-domain DNS (the site is live at https://www.jacobschepis.com).
 
 ## Tasks
 
@@ -40,14 +41,20 @@ lives in `Models/Portfolio.cs`, shared by every page._
 **Ship it**
 - [x] Make the site static so it can use Azure Static Web Apps' free tier, which (unlike free
   App Service) allows a custom domain with free HTTPS (`--export` mode + GitHub Actions workflow)
-- [ ] Domain: use jacobschepis.com (already registered at Hostinger, currently parked); turn on
-  auto-renew in hPanel
-- [ ] Create the Static Web App in Azure (free plan, deployment source "Other"), add its deployment
-  token as the `AZURE_STATIC_WEB_APPS_API_TOKEN` repo secret, then push or re-run the workflow
-- [ ] Add the custom domain in the Static Web App: CNAME for www at Hostinger; for the bare
-  domain, an ALIAS record if Hostinger has one, otherwise Cloudflare/Azure DNS or a redirect to www
-- [ ] Add the live link to the README, the GitHub repo's Website field, my GitHub profile and my resume
-- [ ] Update the README once it's no longer a work in progress
+- [x] Create the Static Web App in Azure (free plan, deployment source "Other") and add its
+  deployment token as the `AZURE_STATIC_WEB_APPS_API_TOKEN` repo secret. Live at
+  https://www.jacobschepis.com (Azure default URL: https://agreeable-smoke-0cd9f3600.5.azurestaticapps.net)
+- [x] www.jacobschepis.com: CNAME at Hostinger, validated in Azure, HTTPS working
+- [ ] Bare domain jacobschepis.com: TXT validation record added at Hostinger; still to do: delete the
+  parking A record on `@` and add a CNAME on `@` to the azurestaticapps.net host (Hostinger saves it
+  as ALIAS), then check https://jacobschepis.com loads
+- [ ] Turn on auto-renew for jacobschepis.com in hPanel
+- [x] Add the live link to the README
+- [x] Add the live link to my resume ("Jacob Schepis – Resume (updated).docx/.pdf" in Downloads)
+- [x] Add the live link to the GitHub repo's Website field (and drop "work in progress" from its
+  description)
+- [ ] Add the live link to my GitHub profile
+- [x] Update the README once it's no longer a work in progress
 
 ## Content to use
 

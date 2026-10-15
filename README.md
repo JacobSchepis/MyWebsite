@@ -4,6 +4,8 @@ My personal portfolio site, built with ASP.NET Core Razor Pages and published as
 site on Azure Static Web Apps. It has Home, About, Projects and Contact pages, with a
 responsive CSS grid layout and a mobile menu.
 
+**Live site: <https://www.jacobschepis.com>**
+
 ## Built with
 
 C#, ASP.NET Core 8 Razor Pages, HTML, CSS, Bootstrap. Tech icons are from
@@ -31,7 +33,9 @@ That writes every page and the assets it uses to `dist/` (see `StaticExport.cs`)
 any static host. On every push to `main`, the GitHub Actions workflow in
 `.github/workflows/deploy.yml` does this and deploys `dist/` to Azure Static Web Apps. It
 needs a repository secret called `AZURE_STATIC_WEB_APPS_API_TOKEN` (the Static Web App's
-deployment token); until that's set, the workflow only checks the site builds.
+deployment token), which is set up; without it the workflow only checks the site builds.
+The domain is registered at Hostinger, with DNS records there pointing `www` (CNAME) and
+the bare domain (ALIAS) at the Static Web App.
 
 ## Editing the content
 
