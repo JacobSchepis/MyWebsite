@@ -1,49 +1,81 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
     ViewData["PageCSS"] = "index.css";
+    ViewData["BodyClass"] = "fill-screen";
+    var featured = Portfolio.Projects[0];
+    var others = Portfolio.Projects.Skip(1).Take(3).ToList();
 }
 
-<section>
-    <div class="main-element">
+<section class="main-element">
 
-        <div class="main-page-element element1">
-            <div class="profile-pic test">
-                <img src="~/images/placeholder.jpeg" class="profile-image" />
+    <div class="main-page-element intro">
+        <div class="intro-heading">
+            <div class="monogram" aria-hidden="true">JS</div>
+            <h1>@Portfolio.Name</h1>
+        </div>
+        <p class="headline">@Portfolio.Headline</p>
+        <partial name="_TechBadges" model="Portfolio.Stack" />
+        <p class="blurb">
+            I build practical tools and systems, from a Blazor operations dashboard for a medical-equipment
+            repair workshop to a C++ / OpenGL graphics engine. I like understanding how things work
+            under the hood and turning ideas into something real and usable.
+        </p>
+        <div class="intro-actions">
+            <div class="social-links">
+                <a class="social-button" href="@Portfolio.GitHubUrl" aria-label="GitHub" title="GitHub">
+                    <img src="~/images/socials/github.png" alt="" width="26" height="26" />
+                </a>
+                <a class="social-button" href="@Portfolio.LinkedInUrl" aria-label="LinkedIn" title="LinkedIn">
+                    <img src="~/images/socials/linkedin.png" alt="" width="26" height="26" />
+                </a>
             </div>
-            <div class="header test"></div>
-            <div class="techicons test"></div>
-            <div class="blurb test"></div>
+            <a class="action-button projects-button" asp-page="/Projects">See my projects <span aria-hidden="true">→</span></a>
         </div>
-
-        <div class="main-page-element element2">
-
-        </div>
-
-        <div class="main-page-element element3">
-
-        </div>
-
-        <div class="main-page-element element4">
-
-        </div>
-
-        <div class="main-page-element element5">
-
-        </div>
-
-        <div class="main-page-element element6">
-
-        </div>
-
-        <div class="main-page-element element7">
-
-        </div>
-
-        <div class="main-page-element element8">
-
-        </div>
-
     </div>
+
+    <article class="main-page-element featured">
+        <span class="tile-label">Featured project</span>
+        <a href="@featured.GitHubUrl" class="featured-image">
+            <img src="@featured.Image" alt="@featured.ImageAlt" loading="lazy" />
+        </a>
+        <h2>@featured.Title</h2>
+        <p>@featured.Description</p>
+        <div class="action-links">
+            @if (featured.LiveUrl != null)
+            {
+                <a class="action-button" href="@featured.LiveUrl">Live demo</a>
+            }
+            <a class="action-button secondary" href="@featured.GitHubUrl">Code on GitHub</a>
+        </div>
+    </article>
+
+    @for (var i = 0; i < others.Count; i++)
+    {
+        var project = others[i];
+        <a class="main-page-element project-tile p@(i + 1)" href="@project.GitHubUrl">
+            <h2>
+                @project.Title
+                @if (project.InProgress)
+                {
+                    <span class="status-pill">In progress</span>
+                }
+            </h2>
+            <p>@project.Summary</p>
+            <partial name="_TechBadges" model="project.Stack" />
+        </a>
+    }
+
+    <div class="main-page-element cert-tile">
+        <span class="tile-label">Certified</span>
+        <img src="@Portfolio.Techs.Azure.Icon" alt="" width="48" height="48" />
+        <h2>Microsoft Certified: Azure Fundamentals</h2>
+        <p>AZ-900</p>
+    </div>
+
+    <a class="main-page-element contact-tile" asp-page="/Contact">
+        <h2>Get in touch<span class="tile-arrow" aria-hidden="true">→</span></h2>
+        <p>Open to internship and job opportunities. Find me on LinkedIn or GitHub.</p>
+    </a>
+
 </section>

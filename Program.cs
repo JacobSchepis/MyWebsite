@@ -1,11 +1,6 @@
-using System.Net.WebSockets;
-using System.Text;
-using WebSocketSharp.Server;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
-builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -24,8 +19,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapControllers();
-
 
 app.Run();
-

@@ -1,112 +1,247 @@
-﻿.main-element {
+﻿/* Home page: a CSS grid of tiles. 4 columns on desktop, 2 on tablet, 1 on phones. */
+.main-element {
     display: grid;
-    height: 80dvh;
-    grid-template-rows: repeat(6, 100px);
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    padding-top: 10dvh;
-}
- 
-.element1 {
-    grid-area: 1 / 1 / 7 / 2;
-
-    display: grid;
-
-    grid-template-rows: repeat(12, 50px);
-    grid-template-columns: repeat(1, 100%);
-    justify-items: center;
-    align-items: center;
-    gap:10px;
+    grid-template-columns: 1.25fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas:
+        "intro featured featured cert"
+        "intro featured featured contact"
+        "intro p1 p2 p3";
+    gap: 16px;
+    padding-top: 1rem;
 }
 
-.element1 .test{
-    width: 100%;
-    height: 100%;
-    background-color: black;
-}
-
-    .element1 .profile-pic {
-        grid-area: 1 / 1 / 5 / 1;
-        border-radius: 10px;
+/* On desktop the home page fills exactly one screen: the grid stretches to the space left
+   between the header and footer, and the featured screenshot takes up the slack. */
+@media screen and (min-width: 1101px) {
+    body.fill-screen > .container,
+    body.fill-screen main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
+    body.fill-screen .main-element {
+        flex: 1;
+        max-height: 960px;
+    }
 
-.profile-image {
-    width: 100%;
-    height: 100%;
+    body.fill-screen .featured-image {
+        flex: 1 1 0;
+        min-height: 120px;
+        aspect-ratio: auto;
+    }
 }
 
-.element1 .header{
-    grid-area: 5 / 1 / 7 / 1;
+.intro { grid-area: intro; }
+.featured { grid-area: featured; }
+.cert-tile { grid-area: cert; }
+.contact-tile { grid-area: contact; }
+.p1 { grid-area: p1; }
+.p2 { grid-area: p2; }
+.p3 { grid-area: p3; }
+
+@media screen and (max-width: 1100px) {
+    .main-element {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        grid-template-areas:
+            "intro intro"
+            "featured featured"
+            "p1 p2"
+            "p3 cert"
+            "contact contact";
+    }
 }
 
-.element1 .techicons{
-    grid-area: 7 / 1 / 8 / 1;
+@media screen and (max-width: 640px) {
+    .main-element {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "intro"
+            "featured"
+            "p1"
+            "p2"
+            "p3"
+            "cert"
+            "contact";
+    }
 }
-
-.element1 .blurb{
-    grid-area: 8 / 1 / 12 / 1;
-}
-
-.element2 {
-    grid-area: 1 / 2 / 3 / 4;
-}
-
-.element3 {
-    grid-area: 3 / 2 / 7 / 3;
-}
-
-.element4 {
-    grid-area: 1 / 4 / 3 / 4;
-}
-
-.element5 {
-    grid-area: 3 / 3 / 5 / 5;
-}
-
-.element6 {
-    grid-area: 5 / 3 / 7 / 4;
-}
-
 
 .main-page-element {
-    width: 100%;
-    color: var(--dark-shades);
-    background-color: var(--main-brand-color);
-    border-radius: 10px;
-    padding: 18px;
-}
-
-
-.element-image {
-    width: 50%;
-    margin: auto;
-    display: block;
-}
-
-.techicons {
-    margin: 1dvh;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+    color: var(--text-color);
+    background-color: var(--surface-raised);
+    border: 1px solid var(--surface-border);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+    text-decoration: none;
 }
 
-    .techicons img {
-        margin: 2px;
-        width: 5%;
+    .main-page-element h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: var(--heading-color);
     }
 
-.socials {
+    .main-page-element p {
+        margin: 0;
+    }
+
+.tile-label {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Intro tile */
+
+.intro {
+    background-color: var(--surface);
+    gap: 0.9rem;
+}
+
+.intro-heading {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+    .intro-heading h1 {
+        margin: 0;
+        text-align: left;
+        font-size: 2rem;
+    }
+
+.monogram {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #e11d74);
+    color: var(--on-accent);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.headline {
+    color: var(--heading-color);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.blurb {
+    color: var(--muted-text);
+    line-height: 1.5;
+}
+
+.intro-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.social-button {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--chip-bg);
+    transition: transform 150ms ease, background-color 150ms ease;
+}
+
+    .social-button:hover {
+        transform: translateY(-2px);
+        background-color: #fff;
+    }
+
+.projects-button {
     justify-content: center;
 }
 
-    .socials img {
-        width: 7%;
-        margin: 0dvh 2dvh;
+/* Featured project tile */
+
+.featured-image {
+    display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+    .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top left;
+        transition: transform 300ms ease;
     }
 
+    .featured-image:hover img {
+        transform: scale(1.03);
+    }
 
-.about-techicons img {
-    width: 50px;
+/* Small project tiles */
+
+.project-tile {
+    transition: transform 150ms ease, border-color 150ms ease;
+}
+
+    .project-tile:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        color: var(--text-color);
+    }
+
+    .project-tile .tech-badges {
+        margin-top: auto;
+    }
+
+/* Certification and contact tiles */
+
+.cert-tile {
+    background-color: var(--rose-surface);
+    border-color: #5a2a40;
+}
+
+    .cert-tile .tile-label {
+        color: var(--rose);
+    }
+
+    .cert-tile img {
+        width: 36px;
+        height: 36px;
+    }
+
+.contact-tile {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    transition: background-color 150ms ease;
+}
+
+    .contact-tile h2 {
+        color: var(--on-accent);
+    }
+
+    .contact-tile:hover {
+        background-color: var(--accent-hover);
+        color: var(--on-accent);
+    }
+
+.tile-arrow {
+    margin-left: 0.3rem;
 }

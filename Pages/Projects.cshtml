@@ -10,55 +10,43 @@
     <h1>My Projects</h1>
 
     <div class="projects-grid">
-        <a class="project" asp-page=/Projects>
-            <img src="~/images/placeholder.jpeg" class="element-image" />
-            <div class="techicons">
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-            </div>
-            <h3>ProxyForge – MTG Card Manager</h3>
-            <p>A desktop app for searchinearching, organizing, and prearching, organizing, and prg, organizing, and printing Magic: The Gathering proxy cards with custom layouts and deck builder support.</p>
-        </a>
-        <a class="project" asp-page=/Projects>
-            <img src="~/images/placeholder.jpeg" class="element-image" />
-            <div class="techicons">
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-            </div>
-            <h3>ProxyForge – MTG Card Manager</h3>
-            <p>A desktop app for A real-time multiplayer trivi game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete searching, organizing, and printing Magic: The Gathering proxy cards with custom layouts and deck builder support.</p>
-        </a>
-        <a class="project" asp-page=/Projects>
-            <img src="~/images/placeholder.jpeg" class="element-image" />
-            <div class="techicons">
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-            </div>
-            <h3>ProxyForge – MTG Card Manager</h3>
-            <p>A desktop app for searching, organizing, and printing Magic: The Gathering proxy cards with custom layouts and deck builder support.</p>
-        </a>
-        <a class="project" asp-page=/Projects>
-            <img src="~/images/placeholder.jpeg" class="element-image" />
-            <div class="techicons">
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-            </div>
-            <h3>ProxyForge – MTG Card Manager</h3>
-            <p>A desktop app for searching, organizing, and printing Magic: The Gathering proxy cards with custom layouts and deck builder support.</p>
-        </a>
-        <a class="project" asp-page=/Projects>
-            <img src="~/images/placeholder.jpeg" class="element-image" />
-            <div class="techicons">
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-                <img src="~/images/technologies/c-.png" class="element-image" />
-            </div>
-            <h3>Trivia Showdown</h3>
-            <p>A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete A real-time multiplayer trivia game with a Unity host and mobile player clients. Players compete by answering timed questions, all synced via WebSockets.</p>
-        </a>
+        @foreach (var project in Portfolio.Projects)
+        {
+            <article class="project" id="@project.Slug">
+                @if (project.Image != null)
+                {
+                    <a href="@(project.LiveUrl ?? project.GitHubUrl)" class="project-image">
+                        <img src="@project.Image" alt="@project.ImageAlt" loading="lazy" />
+                    </a>
+                }
+                else
+                {
+                    <div class="project-banner" aria-hidden="true">
+                        @foreach (var tech in project.Stack.Where(t => t.Icon != null).Take(2))
+                        {
+                            <img src="@tech.Icon" alt="" width="64" height="64" />
+                        }
+                    </div>
+                }
+                <div class="project-body">
+                    <h2>
+                        @project.Title
+                        @if (project.InProgress)
+                        {
+                            <span class="status-pill">In progress</span>
+                        }
+                    </h2>
+                    <p>@project.Description</p>
+                    <partial name="_TechBadges" model="project.Stack" />
+                    <div class="action-links">
+                        @if (project.LiveUrl != null)
+                        {
+                            <a class="action-button" href="@project.LiveUrl">Live demo</a>
+                        }
+                        <a class="action-button secondary" href="@project.GitHubUrl">Code on GitHub</a>
+                    </div>
+                </div>
+            </article>
+        }
     </div>
 </section>

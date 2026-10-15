@@ -1,36 +1,66 @@
-﻿.certification-list {
-    width: 20%;
+﻿.about {
+    width: min(860px, 100%);
+    margin: 0 auto;
 }
 
-.cert-object {
-    background-color: grey;
-    border-radius: 5px;
-    margin: 5px;
-    text-align: right;
-    padding-right: 20px;
-    padding-left: 20px;
+.about-panel {
+    padding: 1.5rem 1.75rem;
+    border-radius: 10px;
+    background-color: var(--surface);
+    border: 1px solid var(--surface-border);
 }
 
-.cert-title {
-    float: left;
+.bio p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
-.cert-object span {
-    font-size: 3dvh;
-    display: inline-block
-}
-
-.cert-link {
-    padding-left: 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 2dvh;
-}
+    .bio p:last-child {
+        margin-bottom: 0;
+    }
 
 .about-techicons {
-    columns: 5;
-    background-color: grey;
-    border-radius: 20px;
-    width: 40%;
-    align-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+    .about-techicons li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+        background-color: var(--chip-bg);
+        color: var(--chip-text);
+        font-weight: bold;
+    }
+
+.cert-object {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    background-color: var(--rose-surface);
+    border: 1px solid #5a2a40;
+    color: var(--heading-color);
+}
+
+    .cert-object div {
+        display: flex;
+        flex-direction: column;
+    }
+
+.cert-title {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.cert-code {
+    color: var(--rose);
 }

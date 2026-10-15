@@ -6,19 +6,28 @@
 }
 <section class="contact">
     <h1>Contact Me</h1>
-    <form action="/contact" method="POST">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-    </form>
+    <p class="contact-intro">
+        I'm open to internship and job opportunities. The best way to reach me is a message on LinkedIn.
+    </p>
+
+    <ul class="contact-links">
+        <li>
+            <a href="@Portfolio.LinkedInUrl" class="contact-card">
+                <img src="~/images/socials/linkedin.png" alt="" width="40" height="40" />
+                <span>
+                    <strong>LinkedIn</strong>
+                    <span>linkedin.com/in/jacob-schepis</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="@Portfolio.GitHubUrl" class="contact-card">
+                <img src="~/images/socials/github.png" alt="" width="40" height="40" />
+                <span>
+                    <strong>GitHub</strong>
+                    <span>github.com/JacobSchepis</span>
+                </span>
+            </a>
+        </li>
+    </ul>
 </section>
