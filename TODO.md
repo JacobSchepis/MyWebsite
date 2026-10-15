@@ -38,7 +38,14 @@ lives in `Models/Portfolio.cs`, shared by every page._
 - [x] Check the layout on a phone-width screen
 
 **Ship it**
-- [ ] Deploy to Azure App Service (free tier), like the WorkshopDashboard demo
+- [x] Make the site static so it can use Azure Static Web Apps' free tier, which (unlike free
+  App Service) allows a custom domain with free HTTPS (`--export` mode + GitHub Actions workflow)
+- [ ] Domain: use jacobschepis.com (already registered at Hostinger, currently parked); turn on
+  auto-renew in hPanel
+- [ ] Create the Static Web App in Azure (free plan, deployment source "Other"), add its deployment
+  token as the `AZURE_STATIC_WEB_APPS_API_TOKEN` repo secret, then push or re-run the workflow
+- [ ] Add the custom domain in the Static Web App: CNAME for www at Hostinger; for the bare
+  domain, an ALIAS record if Hostinger has one, otherwise Cloudflare/Azure DNS or a redirect to www
 - [ ] Add the live link to the README, the GitHub repo's Website field, my GitHub profile and my resume
 - [ ] Update the README once it's no longer a work in progress
 
