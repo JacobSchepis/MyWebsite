@@ -40,16 +40,39 @@
         font-weight: bold;
     }
 
+.certifications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+}
+
 .cert-object {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
     border-radius: 10px;
-    background-color: var(--rose-surface);
-    border: 1px solid #5a2a40;
+    background-color: var(--surface-raised);
+    border: 1px solid var(--surface-border);
     color: var(--heading-color);
 }
+
+    .cert-object.cert-earned {
+        background-color: var(--rose-surface);
+        border-color: #5a2a40;
+    }
+
+    .cert-object.cert-planned {
+        background-color: var(--surface);
+        border-style: dashed;
+    }
+
+        .cert-object.cert-planned img {
+            filter: grayscale(1);
+            opacity: 0.6;
+        }
 
     .cert-object div {
         display: flex;
@@ -62,5 +85,6 @@
 }
 
 .cert-code {
-    color: var(--rose);
+    margin-top: 0.2rem;
+    color: var(--muted-text);
 }

@@ -2,10 +2,9 @@
 .main-element {
     display: grid;
     grid-template-columns: 1.25fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr auto;
+    grid-template-rows: 1fr auto;
     grid-template-areas:
-        "intro featured featured cert"
-        "intro featured featured contact"
+        "intro featured featured side"
         "intro p1 p2 p3";
     gap: 16px;
     padding-top: 1rem;
@@ -35,13 +34,35 @@
 
 .intro { grid-area: intro; }
 .featured { grid-area: featured; }
-.cert-tile { grid-area: cert; }
+.side-column { grid-area: side; }
+.c1 { grid-area: c1; }
+.c2 { grid-area: c2; }
+.c3 { grid-area: c3; }
 .contact-tile { grid-area: contact; }
 .p1 { grid-area: p1; }
 .p2 { grid-area: p2; }
 .p3 { grid-area: p3; }
 
+/* Certifications and "Get in touch" stack in one column; each tile only needs its own
+   height, and spare height is shared out evenly. */
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+    .side-column > .main-page-element {
+        flex: 1 1 0;
+        padding: 0.75rem 1rem;
+    }
+
 @media screen and (max-width: 1100px) {
+    /* Below desktop the tiles join the main grid individually */
+    .side-column {
+        display: contents;
+    }
+
     .main-element {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: none;
@@ -49,7 +70,8 @@
             "intro intro"
             "featured featured"
             "p1 p2"
-            "p3 cert"
+            "p3 c1"
+            "c2 c3"
             "contact contact";
     }
 }
@@ -63,7 +85,9 @@
             "p1"
             "p2"
             "p3"
-            "cert"
+            "c1"
+            "c2"
+            "c3"
             "contact";
     }
 }
@@ -213,20 +237,44 @@
 /* Certification and contact tiles */
 
 .cert-tile {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+    .cert-tile img {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+    }
+
+    .cert-tile h2 {
+        font-size: 1rem;
+    }
+
+    .cert-tile p {
+        margin-top: 0.3rem;
+        font-size: 0.85rem;
+        color: var(--muted-text);
+    }
+
+.cert-earned {
     background-color: var(--rose-surface);
     border-color: #5a2a40;
 }
 
-    .cert-tile .tile-label {
-        color: var(--rose);
-    }
+.cert-planned {
+    background-color: var(--surface);
+    border-style: dashed;
+}
 
-    .cert-tile img {
-        width: 36px;
-        height: 36px;
+    .cert-planned img {
+        filter: grayscale(1);
+        opacity: 0.6;
     }
 
 .contact-tile {
+    justify-content: center;
     background-color: var(--accent);
     border-color: var(--accent);
     color: var(--on-accent);

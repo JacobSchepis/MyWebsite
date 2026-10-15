@@ -15,6 +15,11 @@ public record Project(
     string? LiveUrl = null,
     bool InProgress = false);
 
+public enum CertStatus { Earned, InProgress, Planned }
+
+/// <summary>A Microsoft certification, e.g. Name "Azure Fundamentals", Code "AZ-900".</summary>
+public record Certification(string Name, string Code, CertStatus Status);
+
 /// <summary>
 /// All the site's content in one place, shared by the Home, About and Projects pages.
 /// Icons are from Devicon (MIT), served from jsDelivr.
@@ -50,6 +55,14 @@ public static class Portfolio
     public static readonly IReadOnlyList<Tech> Stack =
     [
         Techs.CSharp, Techs.DotNet, Techs.Blazor, Techs.Sql, Techs.Azure, Techs.Git, Techs.Cpp, Techs.OpenGL,
+    ];
+
+    /// <summary>Certifications, in the order they're shown.</summary>
+    public static readonly IReadOnlyList<Certification> Certifications =
+    [
+        new("Azure Fundamentals", "AZ-900", CertStatus.Earned),
+        new("Azure Administrator Associate", "AZ-104", CertStatus.InProgress),
+        new("Azure Solutions Architect Expert", "AZ-305", CertStatus.Planned),
     ];
 
     /// <summary>Main projects, best first.</summary>

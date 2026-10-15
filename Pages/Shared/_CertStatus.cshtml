@@ -1,0 +1,14 @@
+@model CertStatus
+
+@switch (Model)
+{
+    case CertStatus.Earned:
+        <span class="cert-status earned">Certified</span>
+        break;
+    case CertStatus.InProgress:
+        <span class="cert-status in-progress">In progress</span>
+        break;
+    default:
+        <span class="cert-status planned">Planned</span>
+        break;
+}

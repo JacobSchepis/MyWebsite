@@ -66,16 +66,26 @@
         </a>
     }
 
-    <div class="main-page-element cert-tile">
-        <span class="tile-label">Certified</span>
-        <img src="@Portfolio.Techs.Azure.Icon" alt="" width="48" height="48" />
-        <h2>Microsoft Certified: Azure Fundamentals</h2>
-        <p>AZ-900</p>
-    </div>
+    <div class="side-column">
+        @for (var i = 0; i < Portfolio.Certifications.Count; i++)
+        {
+            var cert = Portfolio.Certifications[i];
+            <div class="main-page-element cert-tile cert-@cert.Status.ToString().ToLowerInvariant() c@(i + 1)">
+                <img src="@Portfolio.Techs.Azure.Icon" alt="" width="32" height="32" />
+                <div class="cert-text">
+                    <h2>@cert.Name</h2>
+                    <p>
+                        @cert.Code ·
+                        <partial name="_CertStatus" model="cert.Status" />
+                    </p>
+                </div>
+            </div>
+        }
 
-    <a class="main-page-element contact-tile" asp-page="/Contact">
-        <h2>Get in touch<span class="tile-arrow" aria-hidden="true">→</span></h2>
-        <p>Open to internship and job opportunities. Find me on LinkedIn or GitHub.</p>
-    </a>
+        <a class="main-page-element contact-tile" asp-page="/Contact">
+            <h2>Get in touch<span class="tile-arrow" aria-hidden="true">→</span></h2>
+            <p>Open to internship and job opportunities.</p>
+        </a>
+    </div>
 
 </section>
