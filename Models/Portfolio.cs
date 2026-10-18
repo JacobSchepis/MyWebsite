@@ -106,7 +106,8 @@ public static class Portfolio
             Stack: [Techs.Angular, Techs.TypeScript, Techs.CSharp, Techs.AzureFunctions, Techs.SqlServer],
             GitHubUrl: "https://github.com/JacobSchepis/PackCracker",
             Image: "/images/projects/packcracker.jpg",
-            ImageAlt: "PackCracker's grid view of an opened Duskmourn Collector Booster, with each card's price and the most valuable card badged \"Best pull\""),
+            ImageAlt: "PackCracker's grid view of an opened Duskmourn Collector Booster, with each card's price and the most valuable card badged \"Best pull\"",
+            LiveUrl: "https://lemon-hill-02ffe8200.4.azurestaticapps.net"),
         new(
             Slug: "opengl-engine",
             Title: "OpenGL Graphics Engine",
