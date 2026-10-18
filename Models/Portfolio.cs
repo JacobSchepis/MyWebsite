@@ -104,7 +104,7 @@ public static class Portfolio
             Summary: "Open Magic: The Gathering booster packs built from real collation data.",
             Description: "Open Magic: The Gathering booster packs for free, built from each set's real collation data (MTGJSON), with a tear-open animation, card-by-card reveal and a saved collection with market values. An Angular app in front of a C# Azure Functions API with EF Core on SQL Server, JWT sign-in and 76 automated tests.",
             Stack: [Techs.Angular, Techs.TypeScript, Techs.CSharp, Techs.AzureFunctions, Techs.SqlServer],
-            GitHubUrl: null,
+            GitHubUrl: "https://github.com/JacobSchepis/PackCracker",
             Image: "/images/projects/packcracker.jpg",
             ImageAlt: "PackCracker's grid view of an opened Duskmourn Collector Booster, with each card's price and the most valuable card badged \"Best pull\""),
         new(
