@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model IndexModel
 @{
     ViewData["PageCSS"] = "index.css";
@@ -53,7 +53,7 @@
     @for (var i = 0; i < others.Count; i++)
     {
         var project = others[i];
-        <a class="main-page-element project-tile p@(i + 1)" href="@project.GitHubUrl">
+        <a class="main-page-element project-tile p@(i + 1)" href="@(project.PrimaryUrl ?? $"/projects#{project.Slug}")">
             <h2>
                 @project.Title
                 @if (project.InProgress)
@@ -62,7 +62,7 @@
                 }
             </h2>
             <p>@project.Summary</p>
-            <partial name="_TechBadges" model="project.Stack" />
+            <partial name="_TechBadges" model="project.Stack.Take(3)" />
         </a>
     }
 

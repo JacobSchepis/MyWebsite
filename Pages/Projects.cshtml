@@ -13,11 +13,17 @@
         @foreach (var project in Portfolio.Projects)
         {
             <article class="project" id="@project.Slug">
-                @if (project.Image != null)
+                @if (project.Image != null && (project.LiveUrl ?? project.GitHubUrl) is string imageLink)
                 {
-                    <a href="@(project.LiveUrl ?? project.GitHubUrl)" class="project-image">
+                    <a href="@imageLink" class="project-image">
                         <img src="@project.Image" alt="@project.ImageAlt" loading="lazy" />
                     </a>
+                }
+                else if (project.Image != null)
+                {
+                    <div class="project-image">
+                        <img src="@project.Image" alt="@project.ImageAlt" loading="lazy" />
+                    </div>
                 }
                 else
                 {
@@ -38,13 +44,19 @@
                     </h2>
                     <p>@project.Description</p>
                     <partial name="_TechBadges" model="project.Stack" />
-                    <div class="action-links">
-                        @if (project.LiveUrl != null)
-                        {
-                            <a class="action-button" href="@project.LiveUrl">Live demo</a>
-                        }
-                        <a class="action-button secondary" href="@project.GitHubUrl">Code on GitHub</a>
-                    </div>
+                    @if (project.LiveUrl != null || project.GitHubUrl != null)
+                    {
+                        <div class="action-links">
+                            @if (project.LiveUrl != null)
+                            {
+                                <a class="action-button" href="@project.LiveUrl">@project.LiveLabel</a>
+                            }
+                            @if (project.GitHubUrl != null)
+                            {
+                                <a class="action-button secondary" href="@project.GitHubUrl">Code on GitHub</a>
+                            }
+                        </div>
+                    }
                 </div>
             </article>
         }

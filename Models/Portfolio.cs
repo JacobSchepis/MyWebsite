@@ -9,11 +9,16 @@ public record Project(
     string Summary,
     string Description,
     IReadOnlyList<Tech> Stack,
-    string GitHubUrl,
+    string? GitHubUrl,
     string? Image = null,
     string? ImageAlt = null,
     string? LiveUrl = null,
-    bool InProgress = false);
+    bool InProgress = false,
+    string LiveLabel = "Live demo")
+{
+    /// <summary>Where the project's tile links: the code if it's public, otherwise the live site.</summary>
+    public string? PrimaryUrl => GitHubUrl ?? LiveUrl;
+}
 
 public enum CertStatus { Earned, InProgress, Planned }
 
@@ -38,6 +43,10 @@ public static class Portfolio
         public static readonly Tech CSharp = new("C#", $"{Devicon}/csharp/csharp-original.svg");
         public static readonly Tech DotNet = new(".NET", $"{Devicon}/dotnetcore/dotnetcore-original.svg");
         public static readonly Tech Blazor = new("Blazor", $"{Devicon}/blazor/blazor-original.svg");
+        public static readonly Tech Angular = new("Angular", $"{Devicon}/angular/angular-original.svg");
+        public static readonly Tech TypeScript = new("TypeScript", $"{Devicon}/typescript/typescript-original.svg");
+        public static readonly Tech SqlServer = new("SQL Server", $"{Devicon}/microsoftsqlserver/microsoftsqlserver-original.svg");
+        public static readonly Tech AzureFunctions = new("Azure Functions");
         public static readonly Tech Sql = new("SQL", $"{Devicon}/azuresqldatabase/azuresqldatabase-original.svg");
         public static readonly Tech Sqlite = new("SQLite", $"{Devicon}/sqlite/sqlite-original.svg");
         public static readonly Tech Azure = new("Azure", $"{Devicon}/azure/azure-original.svg");
@@ -54,7 +63,7 @@ public static class Portfolio
     /// <summary>The stack shown on the Home and About pages.</summary>
     public static readonly IReadOnlyList<Tech> Stack =
     [
-        Techs.CSharp, Techs.DotNet, Techs.Blazor, Techs.Sql, Techs.Azure, Techs.Git, Techs.Cpp, Techs.OpenGL,
+        Techs.CSharp, Techs.DotNet, Techs.Blazor, Techs.Angular, Techs.Sql, Techs.Azure, Techs.Git, Techs.Cpp, Techs.OpenGL,
     ];
 
     /// <summary>Certifications, in the order they're shown.</summary>
@@ -78,6 +87,26 @@ public static class Portfolio
             Image: "/images/projects/workshop-dashboard.png",
             ImageAlt: "The Workshop Dashboard overview page: open workshop jobs grouped by status, with overdue counts",
             LiveUrl: "https://workshop-dashboard-demo-hyeafweeccecfac5.australiaeast-01.azurewebsites.net"),
+        new(
+            Slug: "central-coast-power",
+            Title: "Central Coast Power",
+            Summary: "Live website for a family electrical contracting business.",
+            Description: "The website for my dad's electrical contracting business: an Angular site covering services, service areas and a quote form, with a C# Azure Functions API that emails enquiries through Resend. Hosted on Azure Static Web Apps with a custom domain and deployed from GitHub Actions.",
+            Stack: [Techs.Angular, Techs.CSharp, Techs.AzureFunctions, Techs.Azure],
+            GitHubUrl: null,
+            Image: "/images/projects/central-coast-power.jpg",
+            ImageAlt: "The Central Coast Power home page: \"Reliable electrical work, done right the first time\", with call and free-quote buttons",
+            LiveUrl: "https://www.centralcoastpower.com.au",
+            LiveLabel: "Visit site"),
+        new(
+            Slug: "packcracker",
+            Title: "PackCracker",
+            Summary: "Open Magic: The Gathering booster packs built from real collation data.",
+            Description: "Open Magic: The Gathering booster packs for free, built from each set's real collation data (MTGJSON), with a tear-open animation, card-by-card reveal and a saved collection with market values. An Angular app in front of a C# Azure Functions API with EF Core on SQL Server, JWT sign-in and 76 automated tests.",
+            Stack: [Techs.Angular, Techs.TypeScript, Techs.CSharp, Techs.AzureFunctions, Techs.SqlServer],
+            GitHubUrl: null,
+            Image: "/images/projects/packcracker.jpg",
+            ImageAlt: "PackCracker's grid view of an opened Duskmourn Collector Booster, with each card's price and the most valuable card badged \"Best pull\""),
         new(
             Slug: "opengl-engine",
             Title: "OpenGL Graphics Engine",
